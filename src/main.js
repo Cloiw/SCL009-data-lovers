@@ -1,11 +1,23 @@
 /* Manejo del DOM */
-const dataLol = window.LOLdata;
+//const dataLol = window.LOLdata;
+fetch('https://raw.githubusercontent.com/Cloiw/SCL009-data-lovers/master/src/data/lol/lol.json')
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+    const dataLol= data.data
+    console.log(dataLol)
+  
+ 
+
+
 const clearInfo = document.getElementById("clearInfoChamp");
 const championImgDiv = document.getElementById("championImg");
 const orderChange = document.getElementById("userSelectedOrder");
 const selectChange = document.getElementById("userSelectedTag");
 const championInfoDiv = document.getElementById("championInfoA");
 const championInfoDivB = document.getElementById("championInfoB");
+
 
 
 //funcion para mostrar informacion de cada champ
@@ -54,8 +66,7 @@ window.onload = function showAllOnload() {  // mostrar todos al inicio
     
    `<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
     <div class="card mt-3" style="background-color: #e2e2e2";>
-    <div style="cursor: pointer;" id="${element.id}" onclick=championInfo(${JSON.stringify(element.img)},${JSON.stringify(element.id)},${element.stats.hp},${element.stats.hpperlevel},${element.stats.hpregen},${element.stats.hpregenperlevel},${element.stats.mp},${element.stats.mpperlevel},${element.stats.attackdamage},${element.stats.attackrange},${element.stats.movespeed},${element.stats.armor},${element.stats.armorperlevel},${element.stats.spellblock},${element.stats.spellblockperlevel})
-    )>
+    <div style="cursor: pointer;" id="${element.id}" onclick= championInfoTest(1,2)>
         <div class="card-header">
         <img src="${element.img}">
         <div class="card-content">
@@ -141,6 +152,7 @@ clearInfo.addEventListener('click', () =>{ //BOTON LIMPIAR
   }
 
 
+});
 
 
 

@@ -123,7 +123,6 @@ calculateBtnB.addEventListener("click", ()=>{//BOTON TEAM 2-B
 
 
   
-  
 });
 
 });

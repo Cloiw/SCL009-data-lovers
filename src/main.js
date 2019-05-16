@@ -6,11 +6,11 @@ const orderChange = document.getElementById("userSelectedOrder");
 const selectChange = document.getElementById("userSelectedTag");
 const championInfoDiv = document.getElementById("championInfoA");
 const championInfoDivB = document.getElementById("championInfoB");
-
+let isChampionSelected = false;
 
 //funcion para mostrar informacion de cada champ
  const championInfo = (infoImg,infoName,infoHp,infoHpLvl,infoHpRegen,infoHpRegenLvl,infoMp,infoMpLvl,infoAttack,infoAttackRange,infoMs,infoArmor,infoArmorLvl,infoSpellBlock,infoSpellBlockLvl) =>{
-
+  isChampionSelected = true;
     
     championInfoDiv.innerHTML += 
          
@@ -133,12 +133,13 @@ orderChange.addEventListener('change', () =>{ //ordenar segun filtro
 ;
 
 clearInfo.addEventListener('click', () =>{ //BOTON LIMPIAR
-    
-    championInfoDiv.removeChild(championInfoDiv.childNodes[1])
-    championInfoDivB.removeChild(championInfoDivB.childNodes[0])
-    championInfoDiv.innerHTML+=`<p class="startText">Selecciona un campeón para ver su información aquí</p>`
- })
-  }
+  if(isChampionSelected){
+  championInfoDiv.removeChild(championInfoDiv.childNodes[1])
+  championInfoDivB.removeChild(championInfoDivB.childNodes[0])
+  championInfoDiv.innerHTML+=`<p class="startText">Selecciona un campeón para ver su información aquí</p>`
+  isChampionSelected = false;}
+})
+}
 
 
 

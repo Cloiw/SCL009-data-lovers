@@ -1,5 +1,5 @@
 /* Manejo del DOM */
-const dataLol = window.LOLdata;
+
 const clearInfo = document.getElementById("clearInfoChamp");
 const championImgDiv = document.getElementById("championImg");
 const orderChange = document.getElementById("userSelectedOrder");
@@ -8,10 +8,12 @@ const championInfoDiv = document.getElementById("championInfoA");
 const championInfoDivB = document.getElementById("championInfoB");
 let isChampionSelected = false;
 
+
+
 //funcion para mostrar informacion de cada champ
  const championInfo = (infoImg,infoName,infoHp,infoHpLvl,infoHpRegen,infoHpRegenLvl,infoMp,infoMpLvl,infoAttack,infoAttackRange,infoMs,infoArmor,infoArmorLvl,infoSpellBlock,infoSpellBlockLvl) =>{
-  isChampionSelected = true;
-    
+
+    isChampionSelected = true;
     championInfoDiv.innerHTML += 
          
       `<div align="center" style="margin-top: 7px;">
@@ -44,8 +46,18 @@ let isChampionSelected = false;
       
  }
 
+ fetch('https://raw.githubusercontent.com/Cloiw/SCL009-data-lovers/master/src/data/lol/lol.json')
+  .then(function(response) {
+    
+    return response.json();
+  })
+  .then(function(data) {
+    showAllOnload(data.data)
+  
+  });
 
-window.onload = function showAllOnload() {  // mostrar todos al inicio
+
+  function showAllOnload(dataLol) {  // mostrar todos al inicio
   championInfo;
   let selectedTag = document.getElementById("userSelectedTag").value;
   let allResultFilter = window.filteringResult(selectedTag,dataLol)
@@ -54,8 +66,7 @@ window.onload = function showAllOnload() {  // mostrar todos al inicio
     
    `<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
     <div class="card mt-3" style="background-color: #e2e2e2";>
-    <div style="cursor: pointer;" id="${element.id}" onclick=championInfo(${JSON.stringify(element.img)},${JSON.stringify(element.id)},${element.stats.hp},${element.stats.hpperlevel},${element.stats.hpregen},${element.stats.hpregenperlevel},${element.stats.mp},${element.stats.mpperlevel},${element.stats.attackdamage},${element.stats.attackrange},${element.stats.movespeed},${element.stats.armor},${element.stats.armorperlevel},${element.stats.spellblock},${element.stats.spellblockperlevel})
-    )>
+    <div style="cursor: pointer;" id="${element.id}" onclick=championInfo(${JSON.stringify(element.img)},${JSON.stringify(element.id)},${element.stats.hp},${element.stats.hpperlevel},${element.stats.hpregen},${element.stats.hpregenperlevel},${element.stats.mp},${element.stats.mpperlevel},${element.stats.attackdamage},${element.stats.attackrange},${element.stats.movespeed},${element.stats.armor},${element.stats.armorperlevel},${element.stats.spellblock},${element.stats.spellblockperlevel})>
         <div class="card-header">
         <img src="${element.img}">
         <div class="card-content">
@@ -133,13 +144,15 @@ orderChange.addEventListener('change', () =>{ //ordenar segun filtro
 ;
 
 clearInfo.addEventListener('click', () =>{ //BOTON LIMPIAR
-  if(isChampionSelected){
-  championInfoDiv.removeChild(championInfoDiv.childNodes[1])
-  championInfoDivB.removeChild(championInfoDivB.childNodes[0])
-  championInfoDiv.innerHTML+=`<p class="startText">Selecciona un campeón para ver su información aquí</p>`
-  isChampionSelected = false;}
-})
-}
+  
+    if(isChampionSelected){
+    championInfoDiv.removeChild(championInfoDiv.childNodes[1])
+    championInfoDivB.removeChild(championInfoDivB.childNodes[0])
+    championInfoDiv.innerHTML+=`<p class="startText"><i>Selecciona un campeón para ver su información aquí</i></p>`}
+    isChampionSelected = false;
+ })
+  }
+
 
 
 

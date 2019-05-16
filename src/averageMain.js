@@ -32,16 +32,20 @@ const drawChart =  (champion,info,top,jungle,mid,adc,support,dataTop,dataJungle,
   [adc, dataAdc],
   [support, dataSupport],]);
 let options = {
+  width: 300,
+  height: 300,
+  pieSliceText:"label",
   fontName:"Scada",
   title:info, 
   slices: {0: {color: "red"}, 1:{color: "green"}, 2:{color: "#19407f"}, 3: {color: "#d1a434"},4:{color: "#f442e5"}},
+  pieSliceTextStyle: {fontName: "Scada", fontSize: 15},
   backgroundColor: {fill:"transparent"},
   legend:{
     textStyle:{color: "white",
     fontSize: 15,
-    bold: true,
-   },
-   position: 'labeled'},
+    bold: true,},
+   
+   position: 'none'},
    titleTextStyle: { color: "white",
     fontSize: 20,
     bold: true,

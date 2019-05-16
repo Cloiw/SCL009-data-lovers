@@ -148,7 +148,7 @@ clearInfo.addEventListener('click', () =>{ //BOTON LIMPIAR
     if(isChampionSelected){
     championInfoDiv.removeChild(championInfoDiv.childNodes[1])
     championInfoDivB.removeChild(championInfoDivB.childNodes[0])
-    championInfoDiv.innerHTML+=`<p class="startText">Selecciona un campeón para ver su información aquí</p>`}
+    championInfoDiv.innerHTML+=`<p class="startText"><i>Selecciona un campeón para ver su información aquí</i></p>`}
     isChampionSelected = false;
  })
   }

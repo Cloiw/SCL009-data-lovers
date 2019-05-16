@@ -234,7 +234,7 @@ select:hover,select:focus, .bootstrap-select .btn:hover, .bootstrap-select .btn:
 }
 .piechartClass{
     display: inline-block;
-    margin: 0 auto;
+    margin: 0px;
     text-align: center;
     
     
@@ -280,9 +280,15 @@ select:hover,select:focus, .bootstrap-select .btn:hover, .bootstrap-select .btn:
     height:500px; }
     .selectClass, .bootstrap-select .btn{
     font-size: 20px;
- }}
+ }
+ div::-webkit-scrollbar {
+    width: 30px;
+}
+};
+
+
+
 
   
 
 
- 

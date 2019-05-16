@@ -9,6 +9,17 @@ const chartDivDefenseA= document.getElementById("piechartDefenseA");
 const chartDivDefenseB= document.getElementById("piechartDefenseB");
 google.charts.load('current', {'packages':['corechart']});
 
+fetch('https://raw.githubusercontent.com/Cloiw/SCL009-data-lovers/master/src/data/lol/lol.json')
+  .then(function(response) {
+    
+    return response.json();
+  })
+  .then(function(data) {
+    
+    const dataLol = data.data
+  
+  
+
 
 
 //FUNCIÓN DE CHART
@@ -50,10 +61,10 @@ calculateBtnA.addEventListener("click", ()=>{  //BOTON TEAM 1-A
   let supportTotal=document.getElementById("supportFirstTeam").value;
 
   
-  let calculateAllAttacks= window.calculateAllAttacks(topTotal,jungleTotal,midTotal,adcTotal,supportTotal,window.LOLdata);
-  let calculateAttackRange= window.calculateAttackRange(topTotal,jungleTotal,midTotal,adcTotal,supportTotal,window.LOLdata);
-  let calculateDefense = window.calculateDefense(topTotal,jungleTotal,midTotal,adcTotal,supportTotal,window.LOLdata);
-  let calculateMagic = window.calculateMagic(topTotal,jungleTotal,midTotal,adcTotal,supportTotal,window.LOLdata);
+  let calculateAllAttacks= window.calculateAllAttacks(topTotal,jungleTotal,midTotal,adcTotal,supportTotal,dataLol);
+  let calculateAttackRange= window.calculateAttackRange(topTotal,jungleTotal,midTotal,adcTotal,supportTotal,dataLol);
+  let calculateDefense = window.calculateDefense(topTotal,jungleTotal,midTotal,adcTotal,supportTotal,dataLol);
+  let calculateMagic = window.calculateMagic(topTotal,jungleTotal,midTotal,adcTotal,supportTotal,dataLol);
   showMyTeamTotal.innerHTML="";
   showMyTeamTotal.innerHTML+= `<div class="col-md-12 average"><p class="textCalculated">
   ATAQUE<br>
@@ -70,9 +81,9 @@ calculateBtnA.addEventListener("click", ()=>{  //BOTON TEAM 1-A
   RANGO DE ATAQUE<br>
   ${calculateAttackRange}
   </p></div>`
-  drawChart("CAMPEÓN","ATAQUE",topTotal,jungleTotal,midTotal,adcTotal,supportTotal,window.LOLdata[topTotal].info.attack,window.LOLdata[jungleTotal].info.attack,window.LOLdata[midTotal].info.attack,window.LOLdata[adcTotal].info.attack,window.LOLdata[supportTotal].info.attack,chartDivDamageA);
-  drawChart("CAMPEÓN","ATAQUE MÁGICO",topTotal,jungleTotal,midTotal,adcTotal,supportTotal,window.LOLdata[topTotal].info.magic,window.LOLdata[jungleTotal].info.magic,window.LOLdata[midTotal].info.magic,window.LOLdata[adcTotal].info.magic,window.LOLdata[supportTotal].info.magic,chartDivMagicA);
-  drawChart("CAMPEÓN","DEFENSA",topTotal,jungleTotal,midTotal,adcTotal,supportTotal,window.LOLdata[topTotal].info.defense,window.LOLdata[jungleTotal].info.defense,window.LOLdata[midTotal].info.defense,window.LOLdata[adcTotal].info.defense,window.LOLdata[supportTotal].info.defense,chartDivDefenseA);
+  drawChart("CAMPEÓN","ATAQUE",topTotal,jungleTotal,midTotal,adcTotal,supportTotal,dataLol[topTotal].info.attack,dataLol[jungleTotal].info.attack,dataLol[midTotal].info.attack,dataLol[adcTotal].info.attack,dataLol[supportTotal].info.attack,chartDivDamageA);
+  drawChart("CAMPEÓN","ATAQUE MÁGICO",topTotal,jungleTotal,midTotal,adcTotal,supportTotal,dataLol[topTotal].info.magic,dataLol[jungleTotal].info.magic,dataLol[midTotal].info.magic,dataLol[adcTotal].info.magic,dataLol[supportTotal].info.magic,chartDivMagicA);
+  drawChart("CAMPEÓN","DEFENSA",topTotal,jungleTotal,midTotal,adcTotal,supportTotal,dataLol[topTotal].info.defense,dataLol[jungleTotal].info.defense,dataLol[midTotal].info.defense,dataLol[adcTotal].info.defense,dataLol[supportTotal].info.defense,chartDivDefenseA);
 
   
 });
@@ -86,10 +97,10 @@ calculateBtnB.addEventListener("click", ()=>{//BOTON TEAM 2-B
   let supportTotal=document.getElementById("supportSecondTeam").value;
   
   
-  let calculateAllAttacks= window.calculateAllAttacks(topTotal,jungleTotal,midTotal,adcTotal,supportTotal,window.LOLdata);
-  let calculateAttackRange= window.calculateAttackRange(topTotal,jungleTotal,midTotal,adcTotal,supportTotal,window.LOLdata);
-  let calculateDefense = window.calculateDefense(topTotal,jungleTotal,midTotal,adcTotal,supportTotal,window.LOLdata);
-  let calculateMagic = window.calculateMagic(topTotal,jungleTotal,midTotal,adcTotal,supportTotal,window.LOLdata);
+  let calculateAllAttacks= window.calculateAllAttacks(topTotal,jungleTotal,midTotal,adcTotal,supportTotal,dataLol);
+  let calculateAttackRange= window.calculateAttackRange(topTotal,jungleTotal,midTotal,adcTotal,supportTotal,dataLol);
+  let calculateDefense = window.calculateDefense(topTotal,jungleTotal,midTotal,adcTotal,supportTotal,dataLol);
+  let calculateMagic = window.calculateMagic(topTotal,jungleTotal,midTotal,adcTotal,supportTotal,dataLol);
   showMyTeamTotal.innerHTML="";
   showMyTeamTotal.innerHTML+= `<div class="col-md-12 average"><p class="textCalculated">
   ATAQUE<br>
@@ -106,13 +117,13 @@ calculateBtnB.addEventListener("click", ()=>{//BOTON TEAM 2-B
   RANGO DE ATAQUE<br>
   ${calculateAttackRange}
   </p></div>`
-  drawChart("CAMPEÓN","ATAQUE",topTotal,jungleTotal,midTotal,adcTotal,supportTotal,window.LOLdata[topTotal].info.attack,window.LOLdata[jungleTotal].info.attack,window.LOLdata[midTotal].info.attack,window.LOLdata[adcTotal].info.attack,window.LOLdata[supportTotal].info.attack,chartDivDamageB);
-  drawChart("CAMPEÓN","ATAQUE MÁGICO",topTotal,jungleTotal,midTotal,adcTotal,supportTotal,window.LOLdata[topTotal].info.magic,window.LOLdata[jungleTotal].info.magic,window.LOLdata[midTotal].info.magic,window.LOLdata[adcTotal].info.magic,window.LOLdata[supportTotal].info.magic,chartDivMagicB);
-  drawChart("CAMPEÓN","DEFENSA",topTotal,jungleTotal,midTotal,adcTotal,supportTotal,window.LOLdata[topTotal].info.defense,window.LOLdata[jungleTotal].info.defense,window.LOLdata[midTotal].info.defense,window.LOLdata[adcTotal].info.defense,window.LOLdata[supportTotal].info.defense,chartDivDefenseB);
+  drawChart("CAMPEÓN","ATAQUE",topTotal,jungleTotal,midTotal,adcTotal,supportTotal,dataLol[topTotal].info.attack,dataLol[jungleTotal].info.attack,dataLol[midTotal].info.attack,dataLol[adcTotal].info.attack,dataLol[supportTotal].info.attack,chartDivDamageB);
+  drawChart("CAMPEÓN","ATAQUE MÁGICO",topTotal,jungleTotal,midTotal,adcTotal,supportTotal,dataLol[topTotal].info.magic,dataLol[jungleTotal].info.magic,dataLol[midTotal].info.magic,dataLol[adcTotal].info.magic,dataLol[supportTotal].info.magic,chartDivMagicB);
+  drawChart("CAMPEÓN","DEFENSA",topTotal,jungleTotal,midTotal,adcTotal,supportTotal,dataLol[topTotal].info.defense,dataLol[jungleTotal].info.defense,dataLol[midTotal].info.defense,dataLol[adcTotal].info.defense,dataLol[supportTotal].info.defense,chartDivDefenseB);
 
 
   
   
 });
 
-
+});
